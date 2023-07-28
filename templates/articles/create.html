@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not created %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <button type="submit">Create Article</button>
+</form>
+
+{% else %}
+    <div>
+        <p>Article was created</p>
+    </div>
+   <a href="/articles/{{obj.id}}" target="_blank">{{obj.title}} - {{obj.content}}</a>
+{% endif %}
+
+{% endblock content %}
